@@ -46,12 +46,13 @@ class SessionsController < ApplicationController
       return
     end
 
-
-
-
-
-
-
+    #waitの判定をする。
+    if @user.wait
+      #"users/:id/waiting"にリダイレクトする。
+      
+      
+      return
+    end
 
 
 

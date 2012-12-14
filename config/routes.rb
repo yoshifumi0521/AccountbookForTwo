@@ -11,6 +11,16 @@ AccountbookForTwo::Application.routes.draw do
   #postsコントローラーのルーティング
   resources :posts,only: [:new]
   
+  #usersコントローラーのルーティング
+  resources :users
+   
+
+
+    #個別リソースを使ったアクションを追加する。
+    get :follow,:on => :member
+    post :followed,:on => :member
+
+  end
 
 
   
