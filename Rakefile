@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-AccountbookForTwo::Application.load_tasks
+MembershipServiceOfFacebook::Application.load_tasks

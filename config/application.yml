@@ -1,0 +1,23 @@
+# config/application.yml
+defaults: &defaults
+  APPID: "181015002043365"
+  APPSECRET: "8e8736b212c09d1b54c9ab97065999f5"
+  
+development:
+  <<: *defaults
+
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+
+
+
+
+
+
+
+
