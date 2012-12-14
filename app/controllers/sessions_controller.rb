@@ -21,6 +21,30 @@ class SessionsController < ApplicationController
     #ユーザーのデータを取得して、@user_data変数に格納する。
     @user_data = @access_token.get("/me/").parsed
 
+    #ユーザーのデータを取得する。
+    @user = User.find_or_initialize_by_uid(@user_data["id"])
+
+    #ユーザーのレコードが保存されたかを判定する。
+    if @user.new_record?
+      @user.name = @user_data["name"]      
+      @user.mail = @user_data["email"]
+      if @user.save
+      
+      else
+        #ここでエラー処理。
+        
+        return
+      end
+    end
+
+    #@userのmatchを判定する。
+    if @user.match
+      #cookiesを保存する。
+      
+      #"posts/new"にリダイレクトする。
+      redirect_to :new_post_path      
+      return
+    end
 
 
 
@@ -28,9 +52,7 @@ class SessionsController < ApplicationController
 
 
 
-    #誰からも選んでもらってない場合は、getstartコントローラのフォローに飛ぶ。            
-    #redirect_to :follow, :flash => {:code => @code}
-    #return
+
 
 
 

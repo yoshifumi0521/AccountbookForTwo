@@ -2,16 +2,15 @@
 #ルーティングをするファイル
 AccountbookForTwo::Application.routes.draw do
 
-
-  get "login/index"
   root :to => "login#index"
 
   #sessionコントローラー。ログインするためのコントローラーである。
   get "sessions/get",as: "login"
   get "sessions/callback"  
 
-  #相方をフォローするためのルーティング
-  get "get_start/follow",as: "follow"
+  #postsコントローラーのルーティング
+  resources :posts,only: [:new]
+  
 
 
   
