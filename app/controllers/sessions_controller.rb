@@ -14,10 +14,12 @@ class SessionsController < ApplicationController
 
   #Facebookからcallbackがきたらするアクション
   def callback
-   
+  
     @code = params[:code]
     #アクセストークンのオブジェクトを取得。これをUserコントローラーのnewに渡したいかも。
-    @access_token = GetObject("callback",@code) 
+    @access_token = GetObject("callback",@code)
+    @token = @access_token.token
+    
     #ユーザーのデータを取得して、@user_data変数に格納する。
     @user_data = @access_token.get("/me/").parsed
 
@@ -53,12 +55,23 @@ class SessionsController < ApplicationController
       return
     end
 
-    #ここで、Userモデルのfollow_id 
+    #ここでUserモデルの中のfollow_idに自分のuidがあるかどうかを調べる。
+    @followers = User.where(:follow_id => @user.uid)
+
+    #@followersが空だったらする処理。
+    if @followers =[]
+      
+      #Facebookの友達からパートナーを探す。"users/:id/follow"にリダイレクトする。
+      redirect_to follow_user_path(@user.id)
+      #セッションにアクセストークンを記録する。暗号化？
+      session[:token] = @token  
+
+      return
+    else
 
 
 
-
-    
+    end
 
   end
 

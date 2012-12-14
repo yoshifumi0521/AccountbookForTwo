@@ -30,6 +30,8 @@ gem 'jquery-rails'
 #oauth2ライブラリ
 gem "oauth2"
 
+gem "koala"
+
 #設定ファイルをつくるライブラリ
 gem 'settingslogic' 
 
