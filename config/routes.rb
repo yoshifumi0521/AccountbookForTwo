@@ -12,14 +12,13 @@ AccountbookForTwo::Application.routes.draw do
   resources :posts,only: [:new]
   
   #usersコントローラーのルーティング
-  resources :users
-   
+  resources :users do
 
 
     #個別リソースを使ったアクションを追加する。
     get :follow,:on => :member
     post :followed,:on => :member
-
+    get :waiting,:on => :member
   end
 
 

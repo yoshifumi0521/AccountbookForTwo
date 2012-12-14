@@ -46,13 +46,14 @@ class SessionsController < ApplicationController
       return
     end
 
-    #waitの判定をする。
+    #waitの判定をする。trueだったら、waitingにリダイレクトする。
     if @user.wait
       #"users/:id/waiting"にリダイレクトする。
-      
-      
+      redirect_to waiting_user_path(@user.id)     
       return
     end
+
+    #ここで、Userモデルのfollow_id 
 
 
 
