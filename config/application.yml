@@ -12,7 +12,8 @@ test:
 
 production:
   <<: *defaults
-
+  APPID: "394414023973425"
+  APPSECRET: "25b6829aa7f52ebdface4f45c3a85441"
 
 
 

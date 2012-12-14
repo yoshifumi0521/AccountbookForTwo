@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     #ユーザーのデータを取得して、@user_data変数に格納する。
     @user_data = @access_token.get("/me/").parsed
 
-        
+            
 
 
 
