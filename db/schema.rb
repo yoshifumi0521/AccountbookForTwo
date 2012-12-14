@@ -11,19 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201093057) do
+ActiveRecord::Schema.define(:version => 20121214105534) do
 
   create_table "users", :force => true do |t|
-    t.string   "uid",          :null => false
-    t.string   "name",         :null => false
-    t.integer  "step"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "mailadress"
-    t.string   "imageurl"
-    t.string   "paypalnumber"
+    t.string   "name",                          :null => false
+    t.string   "uid",                           :null => false
+    t.boolean  "match",      :default => false
+    t.integer  "partner_id"
+    t.string   "follow_id"
+    t.boolean  "wait",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
-
-  add_index "users", ["uid", "name"], :name => "index_users_on_uid_and_name", :unique => true
 
 end
