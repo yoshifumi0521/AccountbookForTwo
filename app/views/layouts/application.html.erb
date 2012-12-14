@@ -11,9 +11,13 @@
         //初期設定など。
         $.mobile.ajaxEnabled = false;
         $.mobile.linkBindingEnabled = false;
-      })
+        $.mobile.ajaxLinksEnabled = false;
+        $.mobile.ajaxFormsEnabled = false;
+      });
+      if (window.location.hash == "#_=_") window.location.hash = "";
     </script>
     <script type="text/javascript" src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>

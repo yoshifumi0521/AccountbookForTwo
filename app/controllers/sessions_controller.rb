@@ -14,15 +14,18 @@ class SessionsController < ApplicationController
 
   #Facebookからcallbackがきたらするアクション
   def callback
-    
+   
+    @code = params[:code]
     #アクセストークンのオブジェクトを取得。これをUserコントローラーのnewに渡したいかも。
-    @access_token = GetObject("callback",params[:code]) 
+    @access_token = GetObject("callback",@code) 
     #ユーザーのデータを取得して、@user_data変数に格納する。
     @user_data = @access_token.get("/me/").parsed
+    logger.debug(@user_data)
 
-            
 
-
+    #誰からも選んでもらってない場合は、getstartコントローラのフォローに飛ぶ。            
+    redirect_to :follow, :flash => {:code => @code}
+    return
 
 
 

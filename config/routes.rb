@@ -2,6 +2,7 @@
 #ルーティングをするファイル
 AccountbookForTwo::Application.routes.draw do
 
+
   get "login/index"
   root :to => "login#index"
 
@@ -9,7 +10,11 @@ AccountbookForTwo::Application.routes.draw do
   get "sessions/get",as: "login"
   get "sessions/callback"  
 
+  #相方をフォローするためのルーティング
+  get "get_start/follow",as: "follow"
 
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
