@@ -1,24 +1,13 @@
 #conding: utf-8
-
 #ルーティングをするファイル
-MembershipServiceOfFacebook::Application.routes.draw do
+AccountbookForTwo::Application.routes.draw do
 
-
-  #homeコントローラー。Home画面のコントローラーである。
-  get "home/index", as: "root"
-  root :to => "home#index"
-
+  get "login/index"
+  root :to => "login#index"
 
   #sessionコントローラー。ログインするためのコントローラーである。
   get "sessions/get",as: "login"
-  get "sessions/callback"
-  get "sessions/logout",as: "logout"
-  
-  #usersコントローラー。ユーザーのデータを扱うためのコントローラー
-  resources :users
-
-
-
+  get "sessions/callback"  
 
 
   # The priority is based upon order of creation:
@@ -70,7 +59,6 @@ MembershipServiceOfFacebook::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -2,9 +2,6 @@
 #ログインやログアウトするコントローラー
 class SessionsController < ApplicationController
 
-  #applicationコントローラーのauthorizeメソッドは実行しないようにする。
-  skip_before_filter :authorize
-   
   #oauth認証をするアクション。ここで、Facebookにリダイレクトする。
   def get
     
@@ -22,24 +19,16 @@ class SessionsController < ApplicationController
     @access_token = GetObject("callback",params[:code]) 
     #ユーザーのデータを取得して、@user_data変数に格納する。
     @user_data = @access_token.get("/me/").parsed
-    
-    
+
+        
 
 
+
+
+
+    
 
   end
-
-
-  #ログアウトするときのメソッド
-  def logout
-    
-    #クッキーを削除する。
-    cookies.delete :user_id
-    #ホームにリダイレクトする。
-    redirect_to :root
-
-  end
-
 
 
   #何らかのオブジェクトを返すメソッド。いろいろなoauthオブジェクトなど内部で作成
