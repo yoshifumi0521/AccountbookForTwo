@@ -12,13 +12,13 @@ class UsersController < ApplicationController
     @graph = Koala::Facebook::API.new(@token)
   
     @friends = @graph.fql_query("select uid, name, pic_square from user where uid in (select uid2 from friend where uid1 = me())")
-
     @user = @current_user
+    
 
   end
 
   def followed
-    logger.debug("aaaaaa")
+    logger.debug(params)
 
 
 
