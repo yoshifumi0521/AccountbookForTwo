@@ -48,8 +48,6 @@ class SessionsController < ApplicationController
 
     #@userのmatchを判定する。
     if @user.match
-      #cookiesを保存する。
-      
       #"posts/new"にリダイレクトする。
       redirect_to :new_post_path      
       return
@@ -64,20 +62,20 @@ class SessionsController < ApplicationController
 
     #ここでUserモデルの中のfollow_idに自分のuidがあるかどうかを調べる。
     @followers = User.where(:follow_id => @user.uid)
-
+    logger.debug(@followers.inspect)
+  
     #@followersが空だったらする処理。
-    if @followers =[]
-      
+    if @followers == nil
       #Facebookの友達からパートナーを探す。"users/:id/follow"にリダイレクトする。
       redirect_to follow_user_path(@user.id)
       #セッションにアクセストークンを記録する。暗号化？
       session[:token] = @token  
-
       return
     else
-    #@followersが空でなかったらする処理。
-
-
+      #@followersが空でなかったらする処理。
+      #"users/:id/select"にリダイレクトする。
+      redirect_to select_user_path(@user.id) 
+      return
     end
 
   end

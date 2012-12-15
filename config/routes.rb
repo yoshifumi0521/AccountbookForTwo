@@ -19,6 +19,7 @@ AccountbookForTwo::Application.routes.draw do
     get :follow,:on => :member
     put :followed,:on => :member
     get :waiting,:on => :member
+    get :select,:on => :member
   end
 
 

@@ -54,7 +54,24 @@ class UsersController < ApplicationController
   #待ち受け画面に映るアクション
   def waiting
   
+    #フォローしたユーザーのパートナーがいるかどうか調べる。 
+    @follower_id = @current_user.follow_id
+    @follower = User.find_by_uid(@follower_id)
 
+    if @follower
+      if @follower.match == true
+        #パートナーを探す"users/:id/follow"にリダイレクト
+        redirect_to follow_user_path(@current_user.id)
+        return
+      end
+    end
+
+  end
+
+  #フォローされた人から選ぶ。
+  def select 
+
+    logger.debug("select--")
 
 
 
@@ -66,6 +83,13 @@ class UsersController < ApplicationController
 
 
   end
+
+
+
+
+
+
+
 
   
  
