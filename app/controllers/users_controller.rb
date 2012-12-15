@@ -1,6 +1,5 @@
 #codig: utf-8
 #Userコントローラー
-require 'net/http'
 class UsersController < ApplicationController
  
 
@@ -14,10 +13,22 @@ class UsersController < ApplicationController
   
     @friends = @graph.fql_query("select uid, name, pic_square from user where uid in (select uid2 from friend where uid1 = me())")
 
+    @user = @current_user
+
+  end
+
+  def followed
+    logger.debug("aaaaaa")
+
 
 
 
   end
+  
+
+
+
+
 
   def waiting
   

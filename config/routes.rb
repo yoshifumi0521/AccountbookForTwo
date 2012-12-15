@@ -17,7 +17,7 @@ AccountbookForTwo::Application.routes.draw do
 
     #個別リソースを使ったアクションを追加する。
     get :follow,:on => :member
-    post :followed,:on => :member
+    put :followed,:on => :member
     get :waiting,:on => :member
   end
 

@@ -2,6 +2,9 @@
 #ログインやログアウトするコントローラー
 class SessionsController < ApplicationController
 
+  #applicationコントローラーのauthorizeメソッドは実行しないようにする。
+  skip_before_filter :authorize
+
   #oauth認証をするアクション。ここで、Facebookにリダイレクトする。
   def get
     
@@ -38,6 +41,9 @@ class SessionsController < ApplicationController
         return
       end
     end
+
+    #ログインユーザーのidをcookiesに保存する。
+    cookies.signed[:user_id] ={ value: @user.id ,expires: 30.days.from_now }   
 
     #@userのmatchを判定する。
     if @user.match

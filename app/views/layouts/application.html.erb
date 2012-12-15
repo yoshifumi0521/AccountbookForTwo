@@ -9,8 +9,9 @@
     <script>
       $(document).bind('mobileinit', function(){
         //初期設定など。
-        //$.mobile.ajaxEnabled = true;
-        //$.mobile.linkBindingEnabled = true;
+        $.mobile.ajaxEnabled = false;
+        //$.mobile.ajaxFormsEnabled = false;
+        //$.mobile.linkBindingEnabled = false;
       });
       if (window.location.hash == "#_=_") window.location.hash = "";
     </script>
@@ -23,6 +24,10 @@
 
 
 <%= yield %>
+
+
+
+
 
 
 
