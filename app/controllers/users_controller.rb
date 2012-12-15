@@ -71,7 +71,8 @@ class UsersController < ApplicationController
   #フォローされた人から選ぶ。
   def select 
 
-    logger.debug("select--")
+    @user_uid = @current_user.uid
+    @followers = User.where(:follow_id => @user_uid)
 
 
 

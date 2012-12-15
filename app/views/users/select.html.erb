@@ -5,8 +5,15 @@
 
     <h1>相手は誰ですか？</h1>
 
-      
-
+    <ul data-role="listview" data-filter=“true” data-filter-placeholder="name">
+      <% @followers.each do |follower| %>
+        <li>
+        
+            <image src="<%= follower[:image] %>" width="80" height="80">
+            <h3><%= follower[:name] %></h3>
+        </li>
+      <% end %>
+    </ul>
 
 
 
