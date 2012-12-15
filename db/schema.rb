@@ -14,15 +14,18 @@
 ActiveRecord::Schema.define(:version => 20121214105534) do
 
   create_table "users", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.string   "uid",                           :null => false
-    t.string   "mail",                          :null => false
-    t.boolean  "match",      :default => false
+    t.string   "name",                            :null => false
+    t.string   "uid",                             :null => false
+    t.string   "mail",                            :null => false
+    t.string   "image",                           :null => false
+    t.boolean  "match",        :default => false
     t.integer  "partner_id"
     t.string   "follow_id"
-    t.boolean  "wait",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "wait",         :default => false
+    t.string   "follow_name"
+    t.string   "follow_image"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end
