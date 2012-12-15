@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
 
       return
     else
-
+    #@followersが空でなかったらする処理。
 
 
     end

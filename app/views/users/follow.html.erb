@@ -1,19 +1,64 @@
 
-<div data-role="content">
-  <h1>相手を選ぶ</h1>
+<div data-role="page">
 
-  <ul data-role="listview" data-filter=“true” data-filter-placeholder="name">
-    <% @friends.each do |friend| %>
-      <li>
-        
-          <image src="<%= friend["pic_square"] %>" width="80" height="80">
-          <h3><%= friend["name"] %></h3>
-      
-      </li>
-    <% end %>
-  </ul>
+  <div data-role="content">
+    <h1>相手を選ぶ</h1>
+
+    <ul data-role="listview" data-filter=“true” data-filter-placeholder="name">
+      <% @friends.each do |friend| %>
+        <li>
+          <a href="#" onclick="dialog('<%= friend['name'] %>','<%= friend['pic_square'] %>');">     
+            <image src="<%= friend['pic_square'] %>" width="80" height="80">
+            <h3><%= friend['name'] %></h3>
+          </a> 
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- ダイアログを生成し、表示させるための関数を定義する。 -->
+  <script>
+  
+    function dialog(name,picture){
+
+      var name = name;
+      var picture = picture;
+      //ダイアログの内容
+      var dialog_html = [ '<div data-role="page" id="Dialog">',
+                          '<div data-role="content">',
+                          '<h3>この人が相手でいいですか？</h3>',
+                          '<p>'+ name +'</p>',
+                          '<p><image src="'+picture +'" width=100 height=100></p>',
+                          '<form action="/users/followed" method="post">',
+                          '<input type="submit" value="OK">',
+                          '<a href="#" data-rel="back">キャンセル</a>',
+                          '</form>',
+                          '</div>',
+                          '</div>'      
+                        ].join('');
+
+      // DOMに追加
+      $('body').append($(dialog_html));
+
+      // ダイアログを表示させる。
+      $.mobile.changePage('#Dialog', {
+        transition: 'pop',
+        role: 'dialog'
+      });
+  
+    }
+
+    //ダイアログを閉じたときのイベントを作成し、ダイアログを削除する。
+    $(document).bind('pagehide', function(e, ui){
+      if ($(e.target).attr('id') === 'Dialog') {
+        $(e.target).remove();
+      }
+    });
+
+  </script>
 
 </div>
+
 
 
 
