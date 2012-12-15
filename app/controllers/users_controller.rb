@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     @user_uid = @current_user.uid
     @followers = User.where(:follow_id => @user_uid)
 
-
+    @user = @current_user
 
 
 
