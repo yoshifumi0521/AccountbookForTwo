@@ -1,13 +1,19 @@
 
-<h1>Facebookから友達を検索する。</h1>
+<div data-role="content">
+  <h1>相手を選ぶ</h1>
 
+  <ul data-role="listview" data-filter=“true” data-filter-placeholder="name">
+    <% @friends.each do |friend| %>
+      <li>
+        
+          <image src="<%= friend["pic_square"] %>" width="80" height="80">
+          <h3><%= friend["name"] %></h3>
+      
+      </li>
+    <% end %>
+  </ul>
 
-<% @friends.each do |friend| %>
-
-
-<% end %>
-
-
+</div>
 
 
 
