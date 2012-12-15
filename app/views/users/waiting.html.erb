@@ -1,2 +1,30 @@
-<h1>Users#waiting</h1>
-<p>Find me in app/views/users/waiting.html.erb</p>
+
+<div data-role="page">
+
+  <div data-role="content">
+  
+    <h1>相手を選びました。<br>相手の承認をお待ちください。</h1>
+
+    <p>相手の詳細</p>
+    <ul>
+      <li>
+        名前: <%= @current_user.follow_name %>
+      </li>
+      <li>
+        プロフィール画像: <image src="<%= @current_user.follow_image %>"> 
+      </li>
+    </ul>
+    
+    <p><%= link_to "相手を変える",follow_user_path(@current_user.id) %></p>
+
+
+
+  </div>
+
+</div>
+
+
+
+
+
+

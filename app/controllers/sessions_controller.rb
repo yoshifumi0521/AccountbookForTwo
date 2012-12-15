@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
     if @user.new_record?
       @user.name = @user_data["name"]      
       @user.mail = @user_data["email"]
+      @user.image = "http://graph.facebook.com/"+ @user_data["id"] + "/picture"
       if @user.save
       
       else
