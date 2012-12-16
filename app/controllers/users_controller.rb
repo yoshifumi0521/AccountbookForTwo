@@ -1,4 +1,4 @@
-#codig: utf-8
+#coding: utf-8
 #Userコントローラー
 class UsersController < ApplicationController
  
@@ -76,16 +76,18 @@ class UsersController < ApplicationController
 
     @user = @current_user
 
+  end
 
+  #フォローされた人を、選択して、パートナーを選ぶ。
+  def selected
 
+  
 
 
 
 
 
   end
-
-
 
 
 

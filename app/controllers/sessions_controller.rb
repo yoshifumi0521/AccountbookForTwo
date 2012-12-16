@@ -62,10 +62,10 @@ class SessionsController < ApplicationController
 
     #ここでUserモデルの中のfollow_idに自分のuidがあるかどうかを調べる。
     @followers = User.where(:follow_id => @user.uid)
-    logger.debug(@followers.inspect)
   
     #@followersが空だったらする処理。
-    if @followers == nil
+    if @followers == [] 
+      
       #Facebookの友達からパートナーを探す。"users/:id/follow"にリダイレクトする。
       redirect_to follow_user_path(@user.id)
       #セッションにアクセストークンを記録する。暗号化？
